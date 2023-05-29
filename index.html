@@ -22,6 +22,7 @@
             // you must do in any case), a convenient idiom for replying to a
             // message is to call postMessage on event.source and provide
             // event.origin as the targetOrigin.
+            console.dir(event);
             source = event.source;
             origin = event.origin;
             event.source.postMessage(
