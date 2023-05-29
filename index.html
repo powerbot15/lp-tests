@@ -11,18 +11,12 @@
     (function () {
         let source;
         let origin;
-        console.log('Started')
         window.addEventListener("message", (event) => {
-            console.dir(event);
             source = event.source;
             origin = event.origin;
-            event.source.postMessage(
-                "hi there yourself!  the secret response " + "is: rheeeeet!",
-                event.origin
-            );
         });
-        const sendEvent = document.querySelector('#send-event');
-        sendEvent.addEventListener('click', () => {
+        const sendEventBtn = document.querySelector('#send-event');
+        sendEventBtn.addEventListener('click', () => {
             source.postMessage("do_clear_history", origin);
         });
     })();
