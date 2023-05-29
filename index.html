@@ -37,7 +37,7 @@
         // });
         const sendEvent = document.querySelector('#send-event');
         sendEvent.addEventListener('click', () => {
-            source.postMessage("do_clear_history", '*');
+            window.postMessage("do_clear_history", '*');
         });
     })();
 </script>
