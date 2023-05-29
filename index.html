@@ -12,12 +12,16 @@
         let source;
         let origin;
         window.addEventListener("message", (event) => {
-            source = event.source;
-            origin = event.origin;
+            if (event.data === "Establish connection for clear history") {
+                source = event.source;
+                origin = event.origin;
+            }
         });
         const sendEventBtn = document.querySelector('#send-event');
         sendEventBtn.addEventListener('click', () => {
-            source.postMessage("do_clear_history", origin);
+            if (source && origin) {
+                source.postMessage("do_clear_history", origin);
+            }
         });
     })();
 </script>
