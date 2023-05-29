@@ -12,28 +12,32 @@
         let source;
         let origin;
         console.log('Started')
-        window.addEventListener("message", (event) => {
-            // Do we trust the sender of this message?
-            // if (event.origin !== "http://example.com:8080") return;
-
-            // event.source is window.opener
-            // event.data is "hello there!"
-
-            // Assuming you've verified the origin of the received message (which
-            // you must do in any case), a convenient idiom for replying to a
-            // message is to call postMessage on event.source and provide
-            // event.origin as the targetOrigin.
-            console.dir(event);
-            source = event.source;
-            origin = event.origin;
-            event.source.postMessage(
-                "hi there yourself!  the secret response " + "is: rheeeeet!",
-                event.origin
-            );
-        });
+        // window.addEventListener("message", (event) => {
+        //     // Do we trust the sender of this message?
+        //     // if (event.origin !== "http://example.com:8080") return;
+        //
+        //     // event.source is window.opener
+        //     // event.data is "hello there!"
+        //
+        //     // Assuming you've verified the origin of the received message (which
+        //     // you must do in any case), a convenient idiom for replying to a
+        //     // message is to call postMessage on event.source and provide
+        //     // event.origin as the targetOrigin.
+        //     console.dir(event);
+        //     source = event.source;
+        //     origin = event.origin;
+        //     event.source.postMessage(
+        //         "hi there yourself!  the secret response " + "is: rheeeeet!",
+        //         event.origin
+        //     );
+        // });
+        // const sendEvent = document.querySelector('#send-event');
+        // sendEvent.addEventListener('click', () => {
+        //     source.postMessage("do_clear_history", origin);
+        // });
         const sendEvent = document.querySelector('#send-event');
         sendEvent.addEventListener('click', () => {
-            source.postMessage("do_clear_history", origin);
+            source.postMessage("do_clear_history", '*');
         });
     })();
 </script>
