@@ -6,22 +6,13 @@
 </head>
 <body>
 <h1>External window page</h1>
-<button id="send-event">Send event back</button>
+<button id="read-storage">Read</button>
 <script>
     (function () {
-        let source;
-        let origin;
-        window.addEventListener("message", (event) => {
-            if (event.data === "Establish connection for clear history") {
-                source = event.source;
-                origin = event.origin;
-            }
-        });
-        const sendEventBtn = document.querySelector('#send-event');
-        sendEventBtn.addEventListener('click', () => {
-            if (source && origin) {
-                source.postMessage("do_clear_history", origin);
-            }
+        localStorage.setItem('key', '234234231w234123');
+        const btn = document.querySelector('#read-storage');
+        btn.addEventListener('click', () => {
+            alert(localStorage.getItem('key'));
         });
     })();
 </script>
