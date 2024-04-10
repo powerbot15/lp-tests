@@ -10,8 +10,8 @@
     frame.src = 'https://test-lp-domains.s3.amazonaws.com/test-lp-domains.html?frameorigin=' + window.location.hostname;
     window.addEventListener('message', function (message) {
         console.dir(message.origin);
-    })
+    });
+    document.body.appendChild(frame);
 </script>
-<iframe src="https://test-lp-domains.s3.amazonaws.com/test-lp-domains.html"></iframe>
 </body>
 </html>
