@@ -6,12 +6,19 @@
 </head>
 <body>
 <script>
-    const frame = document.createElement('iframe');
-    frame.src = 'https://test-lp-domains.s3.amazonaws.com/test-lp-domains.html?frameorigin=' + window.location.hostname;
-    window.addEventListener('message', function (message) {
-        console.dir(message.origin);
-    });
-    document.body.appendChild(frame);
+    (function () {
+        const frame = document.createElement('iframe');
+        frame.src = 'https://test-lp-domains.s3.amazonaws.com/test-lp-domains.html';
+        window.addEventListener('message', function (message) {
+            const url = new URL(frame.src);
+            const origin = url.protocol + '//' + url.hostname;
+            if (message.origin !== origin) {
+                return;
+            }
+            console.dir(message.origin);
+        });
+        document.body.appendChild(frame);
+    })();
 </script>
 </body>
 </html>
