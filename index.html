@@ -5,16 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-<h1>External window page</h1>
-<button id="read-storage">Read</button>
 <script>
-    (function () {
-        localStorage.setItem('key', '234234231w234123');
-        const btn = document.querySelector('#read-storage');
-        btn.addEventListener('click', () => {
-            alert(localStorage.getItem('key'));
-        });
-    })();
+    const frame = document.createElement('iframe');
+    frame.src = 'https://test-lp-domains.s3.amazonaws.com/test-lp-domains.html?frameorigin=' + window.location.hostname;
+    window.addEventListener('message', function (message) {
+        console.dir(message.origin);
+    })
 </script>
+<iframe src="https://test-lp-domains.s3.amazonaws.com/test-lp-domains.html"></iframe>
 </body>
 </html>
