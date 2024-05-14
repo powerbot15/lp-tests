@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta
+        http-equiv="Content-Security-Policy"
+        content="connect-src 'self'"
+    />
     <title>Title</title>
 </head>
 <body>
@@ -9,15 +13,11 @@
     (function () {
         const frame = document.createElement('iframe');
         frame.src = 'https://test-lp-domains.s3.amazonaws.com/test-lp-domains.html';
-        window.addEventListener('message', function (message) {
-            const url = new URL(frame.src);
-            const origin = url.protocol + '//' + url.hostname;
-            if (message.origin !== origin) {
-                return;
-            }
-            console.dir(message.origin);
-        });
         document.body.appendChild(frame);
+
+        fetch('https://api.liveperson.net/api/account/77732458/service/acCdnDomain/baseURI.json?version=1.0')
+            .then(value => console.dir(value))
+            .catch((reason) => {console.log('Result from CSPed page:'); console.dir(reason);});
     })();
 </script>
 </body>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<script>
+    fetch('https://api.liveperson.net/api/account/77732458/service/acCdnDomain/baseURI.json?version=1.0')
+        .then(response => response.json().then((json) => {
+            console.log('Result from iframe:');
+            console.log(json);
+        }))
+        .catch(reason => console.dir(reason));
+</script>
+<h2>Iframe to call LP API</h2>
+</body>
+</html>
