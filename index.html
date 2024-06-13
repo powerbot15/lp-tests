@@ -7,6 +7,7 @@
         content="connect-src 'self'"
     />
     <title>Title</title>
+
 </head>
 <body>
 <script>
@@ -20,5 +21,8 @@
             .catch((reason) => {console.log('Result from CSPed page:'); console.dir(reason);});
     })();
 </script>
+<button type="button" id="write">Write</button>
+<button type="button" id="read">Read</button>
+<script src="js/file-system.js"></script>
 </body>
 </html>
